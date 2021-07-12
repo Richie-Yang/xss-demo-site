@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% autoescape false %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackrelay News Scout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/jquery-3.5.1.js"></script>
+    <script src="../static/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/bootstrap-4.5.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+<main>
+    <section id="xss-title">
+        <h1>XSS 101</h1><span>by Richie Yang</span>
+        <br>
+        <a href="index_2">*Switch to fixed version of this website</a>
+    </section>
+    <br>
+
+    <!--Reflected XSS Test Section starts here-->
+    <section class="xss-section">
+        <h2>1. Reflected XSS Test Section<span id="reflected" class="tooltiptext"></span></h2>
+        <form method="get">
+            <label for="query">Please input your name over here:</label>
+            <br>
+            <input type="text" id="query" name="query"/>
+            <input type="submit" value="submit"/>
+        </form>
+        <p>Showing your name:</p>
+        <div>{{return_result}}</div>
+    </section>
+    <!--Reflected XSS Test Section ends here-->
+    <br>
+    <!--Stored-based XSS Test Section starts here-->
+    <section class="xss-section">
+        <h2>2. Stored-based XSS Test Section<span id="storeBased" class="tooltiptext"></span></h2>
+        <br>
+        <form method="post">
+            <label for="comment">Please leave a comment down below:</label>
+            <input type="text" id="comment" name="comment"/>
+            <input type="submit" value="submit"/>
+        </form>
+        <p>Showing all comments:</p>
+        <div>
+            {% for comment in comments%}
+            <p>{{comment}}</p>
+            {% endfor %}
+        </div>
+        <br>
+        <a href="/index_1/dbclean">*Clean all comments from database</a>
+    </section>
+    <!--Stored-based XSS Test Section ends here-->
+    <br>
+    <!--DOM-based XSS Test Section starts here-->
+    <section class="xss-section">
+        <h2>3. DOM-based XSS Test Section<span id="domBased" class="tooltiptext"></span></h2>
+        <label>Please use IE browser to do exploit text</label>
+        <br>
+        <span style="font-size: initial">Welcome to XSS 101</span>
+        <script>
+            let pos = document.URL.indexOf("context=")+37;
+            let name =  document.URL.substring(pos,document.URL.length)
+            if (name.length > 0) {
+                document.write(', ' + name);
+            }
+        </script>
+    </section>
+    <!--DOM-based XSS Test Section ends here-->
+</main>
+</body>
+<script src="../static/index.js"></script>
+</html>
+{% endautoescape %}

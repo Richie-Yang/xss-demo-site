@@ -1,0 +1,32 @@
+<html>
+    <body>
+        <h1>Welcome to DOM based XSS</h1>
+        <script>              
+                function btnSave()
+                {
+                    document.getElementById("btn").innerHTML = "Click here to continue " + document.getElementById('Name').value;
+
+                }
+            </script>
+        <div>
+                <p>
+                    <label>Name</label>
+                    <input type = "text"
+                           id = Name
+                           name="Name"/>
+
+                  </p>
+                  <p>
+                    <label>City</label>
+                    <input type = "text"
+                            id = "myCity"
+                            name="City"/>
+                  </p>
+                  <p>
+                        <button type="button" id="btn" onclick="btnSave()">Save!</button>
+
+                  </p>
+
+        </div>        
+    </body>
+</html>

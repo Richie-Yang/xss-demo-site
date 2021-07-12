@@ -1,0 +1,69 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #242323;
+}
+main {
+    margin: 50px auto 0 auto;
+    width: 350px;
+    padding: 5px;
+    color: aliceblue;
+}
+
+
+a {
+    text-decoration: none;
+    color: grey;
+}
+a:hover {
+    text-decoration: none;
+    color: aliceblue;
+    transition: 0.3s;
+}
+label, p {
+    color: #d5d5d5;
+}
+
+
+#xss-title h1, #xss-title span {
+    cursor: default;
+}
+#xss-title h1 {
+    display: inline-block;
+    font-size: 45px;
+    margin-right: 10px;
+}
+.xss-section {
+    border: 1px solid white;
+}
+.xss-section h2{
+    font-size: 22px;
+    cursor: help;
+}
+
+
+.tooltiptext {
+    visibility: hidden;
+    font-size: 10px;
+    width: auto;
+    background-color: rgba(102, 102, 102, 0.79);
+    color: aliceblue;
+    text-align: center;
+    padding: 3px;
+    border-radius: 6px;
+    margin-top: 25px;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+/* Show the tooltip text when you mouse over the tooltip container */
+.xss-section h2:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+
+
+
+
+
